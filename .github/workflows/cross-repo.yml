@@ -36,10 +36,10 @@ jobs:
         run: |
           git add app_versions.gradle
           git add CHANGELOG.md
-          git commit --message "Prepare release ${{ github.event.inputs.versionName }}"
+          git commit --message "Prepare release ${{ github.event.inputs.versionName }}.${{ github.event.inputs.versionCode }}"
           echo "::set-output name=commit::$(git rev-parse HEAD)"
       - name: Push new branch
-        run: git push origin release/v${{ github.event.inputs.versionName }}
+        run: git push origin release/v${{ github.event.inputs.versionName }}.${{ github.event.inputs.versionCode }}
       # - name: Submit strings.xml for translation
       #   uses: andstor/copycat-action@v3
       #   with:
@@ -56,9 +56,9 @@ jobs:
         uses: thomaseizinger/create-pull-request@1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          head: release/v${{ github.event.inputs.versionName }}
+          head: release/v${{ github.event.inputs.versionName }}.${{ github.event.inputs.versionCode }}
           base: main
-          title: v${{ github.event.inputs.versionName }} into main
+          title: v${{ github.event.inputs.versionName }}.${{ github.event.inputs.versionCode }} into main
           reviewers: ${{ github.event.issue.user.login }}
           body: |
             Hi!
@@ -68,7 +68,7 @@ jobs:
         uses: thomaseizinger/create-pull-request@1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          head: release/v${{ github.event.inputs.versionName }}
+          head: release/v${{ github.event.inputs.versionName }}.${{ github.event.inputs.versionCode }}
           base: main
           title: v${{ github.event.inputs.versionName }} into main
           reviewers: ${{ github.event.issue.user.login }}
