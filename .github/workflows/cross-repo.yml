@@ -16,7 +16,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
         with:
-            repository: test-action-repo-2
+            repository: coralewh/test-action-repo-2
             ref: 'main'
             token:  ${{ secrets.TOKEN }}
       - name: Create release branch
