@@ -67,6 +67,7 @@ jobs:
       - name: Create pull request to main
         uses: thomaseizinger/create-pull-request@1.0.0
         with:
+          repository: coralewh/test-action-repo-2
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           head: release/v${{ github.event.inputs.versionName }}
           base: main
