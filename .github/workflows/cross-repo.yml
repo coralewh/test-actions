@@ -53,11 +53,11 @@ jobs:
       #     clean: true
       #     commit_message: release/v${{ github.event.inputs.versionName }} BOT New Strings for translation submitted.
       - name: Create pull request into main
-        uses: thomaseizinger/create-pull-request@1.0.0
+        uses: thomaseizinger/create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          head: release/v${{ github.event.inputs.versionName }}
           repository: coralewh/test-action-repo-2
+          head: release/v${{ github.event.inputs.versionName }}
           base: main
           title: v${{ github.event.inputs.versionName }} into main
           reviewers: ${{ github.event.issue.user.login }}
